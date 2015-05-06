@@ -7,7 +7,7 @@
  * 	Project home:
  * 	https://github.com/dsphper/lUpload
  */
-(function($) {
+!(function($) {
 	var opts = {},
 	defaultOpts = {
 		url : '', // 后台接受地址
