@@ -1,12 +1,13 @@
 /**
  * Author : dsphper
+ * Email : dsphper@gmail.com
  * Version : 0.0.1
  * Licensed under the MIT license:
  * 	http://www.opensource.org/licenses/mit-license.php
  * 	Project home:
  * 	https://github.com/dsphper/lUpload
  */
-(function($) {
+!(function($) {
 	var opts = {},
 	defaultOpts = {
 		url : '', // 后台接受地址
@@ -42,24 +43,20 @@
 		opts = $.extend( {}, defaultOpts , userOpts);
 		this.bind('dragenter', dragenter).bind('dragleave', dragleave).bind('dragover', dragover).bind('drop', drop);
 		$(document).bind('drop', dropDefa).bind('dragover', overDefa).bind('dragleave', leaveDefa).bind('dragenter', enterDefa);
-		console.log(opts);
 	}
 	function dragenter(e) {
-		console.log('拖拽目标已进入');
 		e.dataTransfer.dropEffect = "copy";
 		e.preventDefault();
 		e.stopPropagation();
 
 	}
 	function dragleave(e) {
-		console.log('拖拽目标已离开');
 		e.dataTransfer.dropEffect = "copy";
 		e.preventDefault();
 		e.stopPropagation();
 
 	}
 	function dragover(e) {
-		console.log('拖拽目标正在事件上方移动');
 		e.dataTransfer.dropEffect = "copy";
 		e.preventDefault();
 		e.stopPropagation();
@@ -70,7 +67,6 @@
 		e.dataTransfer.dropEffect = "copy";
 		e.preventDefault();
 		e.stopPropagation();
-		console.log('拖拽目标已经确认放入');
 	}
 	function dropDefa(e) {
 		opts.dropDefa(e);
@@ -98,26 +94,19 @@
 	}
 	function progress(e, file) {
 		if(e.lengthComputable) {
-			// console.log(Math.round((e.loaded / e.total) * 100));
-			// $('progress')[file.index].value = Math.round((e.loaded / e.total) * 100);
 			//计算网速
 			var nowDate = new Date().getTime();
 			var x = (e.loaded) / 1024;
 			var y = (nowDate - startTime) / 1000;
-			// alert(file.index)
 			time.push((x / y).toFixed(2));
-			// console.log("网速：" + (x / y).toFixed(2) + " K\/S");
 			if((e.loaded / e.total) * 100 == 100) {
 				var avg = 0;
 				for (var i = 0; i < time.length; i++) {
 					avg += parseInt(time[i]);
 				};
 				// 求出平均网速
-				// alert(avg / time.length)
 			}
-		// var thisLi = $('#uList li').eq(file.index);
 		opts.run($('#uList li').eq(file.index), Math.round((e.loaded / e.total) * 100), (x / y).toFixed(2));
-		// thisLi.find('.speed').text("网速：" + (x / y).toFixed(2) + " K\/S")
 		} else {
 			alert('无法获得文件大小')
 		}
@@ -133,46 +122,33 @@
 	    } else {
 	        filesize = filesize + ' Bytes';
 	    }
-		// alert(filesize)
 	    return filesize;
 	}
 	function setImageTpl(file, image, img) {
 		var tpl = opts.tpl();
 		$('#uList').html($('#uList').html() + tpl);
-		console.log($('#uList').html());
 		var thisLi = $('#uList li').eq(file.index);
 		thisLi.find('.borderImg img').attr('src', image.target.result);
 		thisLi.find('.fileName').text(file.name);
 		thisLi.find('.fileSize').text(img.width + ' X ' + img.height);
 		thisLi.find('.size').text(getFileSize(file));
 		upload(file);
-		// getFileSize(file);
 	}
 	function getImageInfo(file, image) {
 		var img = new Image();
 		img.src = image.target.result;
 		img.addEventListener('load', function(e) {
-			// console.log(img.width);
 			setImageTpl(file, image, img);
 		}, false);
 	}
 	function readerFile(file) {
 		var reader = new FileReader();
-		window.aaaa = 'aaaa';
-		// reader.onload = (function(file) {
-		// 	return function(e) {
-		// 		// window.aaaa = e.target.result;
-		// 	window.aaaa = '1';
-		// 	}
-		// })(file);
-		// alert(window.aaaa)
 		reader.addEventListener('load', function(e) {
 			switchHand(file, e);
 		}, false);
 		reader.readAsDataURL(file);
 	}
 	function filter(file) {
-		// alert()
 		var type = !file.type ? 'other' : file.type.split('/')[1];
 		if(type) {
 			var typeIsOk = false;
@@ -217,7 +193,6 @@
 	function switchHand(file, e) {
 		var type = !file.type ? 'other' : file.type.split('/')[1];
 		if(type == 'jpeg' || type == 'png' || type == 'gif' || type == 'bmp' || type == 'x-icon') {
-			// console.log(e.target.result);
 			getImageInfo(file, e);
 			return;
 		}
@@ -253,7 +228,6 @@
 				continue;
 			}
 			files[i].index = fi++;
-			// console.log(files[i]);
 			readerFile(files[i]);
 			thisFile = files[i];
 		};

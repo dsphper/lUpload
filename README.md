@@ -1,6 +1,6 @@
- Author : dsphper
- Version : 0.0.1
- Licensed under the MIT license:
- 	http://www.opensource.org/licenses/mit-license.php
- 	Project home:
+ Author : dsphper <br/>
+ Version : 0.0.1 <br/>
+ Licensed under the MIT license: <br/>
+ 	http://www.opensource.org/licenses/mit-license.php <br/>
+ 	Project home: <br/>
  	https://github.com/dsphper/lUpload
