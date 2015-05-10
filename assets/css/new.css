@@ -1,0 +1,180 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+#center {
+	width: 1260px;
+	margin: 0 auto;
+	height: auto;
+}
+#center #title {
+
+	font-family: 微软雅黑;
+	margin-bottom: 20px;
+}
+#center #title h1 {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-weight: 500;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	color: rgb(51, 51, 51);
+	font-size: 36px;
+}
+#center #title span {
+	font-family: 'Myriad Pro', 'Hiragino Sans GB', 'Microsoft YaHei', 微软雅黑, Calibri, Helvetica, tahoma, arial, simsun, 宋体, sans-serif;
+	color: rgb(51, 51, 51);
+	font-size: 16px;
+}
+#center #event {
+	width: 1260px;
+	height: 460px;
+	background-color: #FAFAFA;
+	box-shadow: rgba(0, 0, 0, 0.0470588) 0px 3px 6px 0px inset;
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	display: -o-box;
+	-o-box-orient: horizontal;
+	-o-box-pack: center;
+	-o-box-align: center;
+	display: -ms-box;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+}
+#center #event #dashed {
+	width: 1140px;
+	height: 360px;
+	border: 4px dashed #E6E6E6;
+}
+#center #event #dashed #topImg {
+	width: 100%;
+	height: 180px;
+	background-image: url('./img/image.png');
+	background-repeat: no-repeat;
+	background-position: bottom center;
+}
+#center #event #dashed #middle {
+	width: 168px;
+	height: 44px;
+	margin: 0 auto;
+	background: #00B7EE;
+	text-align: center;
+	line-height: 44px;
+	color: #FFF;
+	font-family: 微软雅黑;
+	cursor: pointer;
+	margin-top: 15px;
+	position: relative;
+}
+#center #event #dashed #middle:hover {
+	background: #00A2D4;
+}
+#center #event #dashed #middle #selectFile {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+}
+#center #event #dashed #bottom {
+	width: 200px;
+	margin: 0 auto;
+	text-align: center;
+	font-family: "Myriad Pro", "Hiragino Sans GB","Microsoft YaHei","微软雅黑", Calibri, Helvetica, tahoma,arial,simsun,"宋体", sans-serif;
+	margin-top: 10px;
+	color: rgb(204, 204, 204);
+	font-size: 20px;
+}
+#center #uList {
+	width: 100%;
+	height: auto;
+	list-style: none;
+}
+#center #uList li {
+	width: 350px;
+	height: 440px;
+	background: #FAFAFA;
+	float: left;
+	margin-top: 25px;
+	position: relative;
+	border: 1px solid #DFDFDF;
+	box-sizing: border-box;
+}
+#center #uList li .uploadInfo {
+	font-family: "Microsoft YaHei","微软雅黑", Calibri, Helvetica, tahoma,arial,simsun,"宋体", sans-serif;
+	font-size: 16px;
+	width: 100%;
+	height: 197px;
+	position: absolute;
+	bottom: 0px;
+	color: #CCCCCC;
+
+}
+#center #uList li .uploadInfo span {
+	display: block;
+	line-height: 26px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+#center #uList li .uploadInfo .progress {
+	margin-top: 10px;
+}
+/*#center #uList li:nth-child(3n-5) {
+	margin-left: 20px;
+
+}*/
+
+#center #uList li:nth-child(3n-4) {
+	margin-left: 105px;
+	margin-right: 105px;
+	
+}
+/*#center #uList li:nth-child(3n+0) {
+	margin-left: 20px;
+
+}*/
+
+
+#center #uList li .image {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-moz-box-pack: center;
+	-moz-box-align: center;
+	display: -o-box;
+	-o-box-orient: horizontal;
+	-o-box-pack: center;
+	-o-box-align: center;
+	display: -ms-box;
+	-ms-box-orient: horizontal;
+	-ms-box-pack: center;
+	-ms-box-align: center;
+	display: box;
+	box-orient: horizontal;
+	box-pack: center;
+	box-align: center;
+	/*width: 245px;*/
+	/*height: 230px;*/
+	/*border: 4px solid #FFFFFF;*/
+}
+#center #uList li .image img {
+	max-width: 325px;
+	max-height: 243px;
+	border: 3px solid #fff;
+	display: block;
+	box-shadow: 0 0 2px #DDD;
+}

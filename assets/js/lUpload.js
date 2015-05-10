@@ -13,7 +13,7 @@
 		url : '', // 后台接受地址
 		maxfiles : 2, // 最大上传文件数
 		maxfilesize : 2, // 最大的文件大小
-		run : function(complete, speed) {},
+		dynamic : function(complete, speed) {},
 		error : function(error,file,i) { alert(error) }, // 异常信息接收
 		multithreading : true, // 是否同时上传
 		type : [], // 限制上传的类型
@@ -27,22 +27,58 @@
 		overDefa : function(e) { return false; },
 		tpl : function() { return 'false'; },
 		setImageTpl : function(file, image, img) {},
+		setOtherTpl : function(file) {},
 		complete : function(file) {},
+		stageChange : function(file) {}, // 当开启队列上传时可以知道那个文件正在被上传
 		Knowntype : {'pdf':'./image/pdf.jpg', 'html':'./image/html.png'},
+		selectMultiple : true // 允许选择多个文件
 	},
 	errorTexts = ["浏览器不支持", "超过最大文件数", "文件大小超过限制", "不允许的上传格式"],
 	errorCode = {200 : 'warning', 201 : 'deadly'}, // warning 普通错误 deadly 致命错误
 	uploadImg = [],
-	uploadTotal = 0,
-	fi = 0,
-	thisFile = 0,
-	startTime = 0,
-	time = [];
+	uploadTotal = 0, // 本次操作被放入的文件数
+	fi = 0, // 记录总共拖入的文件数
+	thisFile = 0, // 存放当前文件的资源对象
+	startTime = 0, // 当前文件的上传开始时间
+	queue = [], // 用于队列上传
+	loadOk = 0, // 用于记录当前操作放入的文件被加载成功的数目
+	time = []; // 用于计算每个文件上传的平均网速
+	// 拖拽上传
 	$.fn.dropFile = function(userOpts) {
 		$.event.props.push("dataTransfer");
 		opts = $.extend( {}, defaultOpts , userOpts);
 		this.bind('dragenter', dragenter).bind('dragleave', dragleave).bind('dragover', dragover).bind('drop', drop);
 		$(document).bind('drop', dropDefa).bind('dragover', overDefa).bind('dragleave', leaveDefa).bind('dragenter', enterDefa);
+	}
+	// 粘贴上传
+	$.fn.pasteFile = function(userOpts) {
+		$.event.props.push("clipboardData");
+		opts = $.extend( {}, defaultOpts , userOpts);
+		var _this = this;
+		this.bind('mouseover', function() { _this.bind('paste', pasteHand); });
+		this.bind('mouseout', function() { _this.unbind('paste', pasteHand); });
+		
+	}
+	// 选择上传
+	$.fn.selectFile = function(userOpts) {
+		opts = $.extend( {}, defaultOpts , userOpts);
+		if($(this).attr('multiple') == undefined && opts.selectMultiple) {
+			$(this).attr('multiple', 'multiple');
+		}
+		$(this).bind('change', function() {
+			handFiles(this.files)
+		})
+	}
+	function pasteHand(e) {
+    	var clipboard = e.clipboardData;
+    	var temp = [];
+    	for (var i = 0; i < clipboard.items.length; i++) {
+    		temp.push(clipboard.items[i].getAsFile());
+    	};
+    	handFiles(temp);
+		e.preventDefault();
+		e.stopPropagation();
+
 	}
 	function dragenter(e) {
 		e.dataTransfer.dropEffect = "copy";
@@ -106,7 +142,13 @@
 				};
 				// 求出平均网速
 			}
-		opts.run($('#uList li').eq(file.index), Math.round((e.loaded / e.total) * 100), (x / y).toFixed(2));
+			var result = {};
+			result.thisDom = $('#uList li').eq(file.index);
+			result.progress = Math.round((e.loaded / e.total) * 100);
+			result.speed = (x / y).toFixed(2);
+			result.loaded = getFileSize({size : e.loaded});
+			result.total = getFileSize({size : e.total});
+			opts.dynamic(result);
 		} else {
 			alert('无法获得文件大小')
 		}
@@ -125,14 +167,39 @@
 	    return filesize;
 	}
 	function setImageTpl(file, image, img) {
-		var tpl = opts.tpl();
+		var tpl = opts.tpl('image', 1);
 		$('#uList').html($('#uList').html() + tpl);
 		var thisLi = $('#uList li').eq(file.index);
-		thisLi.find('.borderImg img').attr('src', image.target.result);
+		thisLi.find('.image img').attr('src', image.target.result);
 		thisLi.find('.fileName').text(file.name);
-		thisLi.find('.fileSize').text(img.width + ' X ' + img.height);
-		thisLi.find('.size').text(getFileSize(file));
-		upload(file);
+		thisLi.find('.imageSize text').text(img.width + ' X ' + img.height);
+		thisLi.find('.fileSize text').text(getFileSize(file));
+		loadOk++;
+		if(loadOk == queue.length && !opts.multithreading) {
+			upload(queue[0]);
+		}
+		if(opts.multithreading) {
+			upload(file);
+		}
+	}
+	function setOtherTpl(file) {
+		var tpl = opts.tpl('other', 1);
+		$('#uList').html($('#uList').html() + tpl);
+		var thisLi = $('#uList li').eq(file.index);
+		thisLi.find('.fileName text').text(file.name);
+		thisLi.find('.fileSize text').text(getFileSize(file));
+		var type = getFileType(file);
+		if(opts.Knowntype[type] != undefined && opts.Knowntype[type] != 'undefined') {
+			thisLi.find('.image img').attr('src', opts.Knowntype[type]);
+
+		}
+		loadOk++;
+		if(loadOk == queue.length && !opts.multithreading) {
+			upload(queue[0]);
+		}
+		if(opts.multithreading) {
+			upload(file);
+		}
 	}
 	function getImageInfo(file, image) {
 		var img = new Image();
@@ -157,19 +224,19 @@
 					if(type == opts.type[o] ) { typeIsOk = true; break;}
 				}
 				if(!typeIsOk) {
-					opts.error(errorTexts[3]);
+					opts.error(errorTexts[3], file);
 					return errorCode['200'];	
 				}	
 			}
 			
 		}
 		if(uploadTotal > opts.maxfiles) {
-			opts.error(errorTexts[1]);
+			opts.error(errorTexts[1], file);
 			return errorCode['201'];
 		}
 		var max_file_size = 1048576 * opts.maxfilesize;
 		if(file.size > max_file_size) {
-			opts.error(errorTexts[2]);
+			opts.error(errorTexts[2], file);
 			return errorCode['200'];
 		}
 
@@ -196,9 +263,12 @@
 			getImageInfo(file, e);
 			return;
 		}
-		alert('other');
+		setOtherTpl(file);
+		// alert('other');
 	}
 	function upload(file) {
+		file.stage = 'uploadIng';
+		opts.stageChange(file);
 		var xhr = createXMLHttpRequest();
 		xhr.open('POST', opts.url, true);
 		var upload = xhr.upload;
@@ -209,6 +279,14 @@
 		}
 		xhr.addEventListener('readystatechange', function() {
 			if(xhr.readyState == 4 && xhr.status == 200) {
+				if(!opts.multithreading) {
+					if(queue.length > 1) {
+						queue.shift();
+						loadOk--;
+						upload_(queue[0]);
+					}
+				}
+				file.responseText = xhr.responseText;
 				opts.complete(file);
 			}
 		}, false);
@@ -217,9 +295,13 @@
 		xhr.send(formData);
 		startTime = new Date().getTime();
 	}
+	function upload_(file) {
+		upload(file);
+	}
 	function handFiles(files) {
 		files = sortFiles(files);
 		uploadTotal = files.length;
+		Array.prototype.push.apply(queue, files);
 		for (var i = 0; i < files.length; i++) {
 			var code = filter(files[i]);
 			if(code == 'deadly') {
@@ -227,7 +309,9 @@
 			} else if(code == 'warning') {
 				continue;
 			}
+			if(files[i].name == undefined) { files[i].name = 'null' }
 			files[i].index = fi++;
+			files[i].stage = 'Waiting';
 			readerFile(files[i]);
 			thisFile = files[i];
 		};
@@ -248,5 +332,9 @@
 		};
 		
 		return listSize;
+	}
+	function getFileType(file) {
+		var type = !file.type ? 'other' : file.type.split('/')[1];
+		return type;
 	}
 })(jQuery)
