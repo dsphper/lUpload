@@ -83,21 +83,22 @@
 // 说明 $('#drop').dropFile为拖拽上传 $('#drop').pasteFile为粘贴上传 $('#drop').selectFile 为选择上传
 		// 拖拽上传
 	var opts = {
-		url : '/lUpload/Demo/upload.php',
+		url : './upload.php',
 		maxfiles: 111 , // 单次上传的数量
 		maxfilesize : 11,  // 单个文件允许的大小 (M)
 		multithreading : true, // true为同时上传false为队列上传
 		type : [], // 限制上传的类型
-		Knowntype : {'pdf':'./image/pdf.jpg', 'html':'./assets/image/html.png'}, // 自定义其他文件的缩略图
+		Knowntype : {'other':'./assets/image/other.jpg', 'html':'./assets/image/html.png'}, // 自定义其他文件的缩略图
 		tpl : function(type) { // 自定义模板
 			var imageTpl = '<li>\
 				<div class="image">\
-					<img src="./assets/image/aa.jpg" alt="">\
+					<img src="./assets/image/other.jpg" alt="">\
 				</div>\
 				<div class="uploadInfo">\
 					<span class="fileName">文件名称: <text>ssad</text></span>\
 					<span class="imageSize">图片尺寸: <text>ssad</text></span>\
 					<span class="fileSize">文件大小: <text>ssad</text></span>\
+					<span class="fileType">文件类型: <text>ssad</text></span>\
 					<span class="speed">上传速度: <text>ssad</text></span>\
 					<span class="loaded">上传详情: <text>zzzz</text></span>\
 					<span class="stage">\
@@ -112,11 +113,12 @@
 			</li>';
 			var otherTpl = '<li>\
 				<div class="image">\
-					<img src="./assets/image/aa.jpg" alt="">\
+					<img src="./assets/image/other.jpg" alt="">\
 				</div>\
 				<div class="uploadInfo">\
 					<span class="fileName">文件名称: <text>ssad</text></span>\
 					<span class="fileSize">文件大小: <text>ssad</text></span>\
+					<span class="fileType">文件类型: <text>ssad</text></span>\
 					<span class="speed">上传速度: <text>ssad</text></span>\
 					<span class="loaded">上传详情: <text>zzzz</text></span>\
 					<span class="stage">\
@@ -149,6 +151,28 @@
 
 			// console.log('第' + file.index + '文件上传完成!');
 		},
+		// 设置图片类型文件View模板
+		setImageTpl : function(data) {
+			var tpl = opts.tpl('image', 1);
+			$('#uList').html($('#uList').html() + tpl);
+			var thisLi = $('#uList li').eq(data.file.index);
+			thisLi.find('.image img').attr('src', data.fileReaderiImage.target.result);
+			thisLi.find('.fileName').text(data.file.name);
+			thisLi.find('.imageSize text').text(data.newImage.width + ' X ' + data.newImage.height);
+			thisLi.find('.fileSize text').text(data.fileSize);
+			thisLi.find('.fileType text').text(data.fileType);
+			
+		},
+		// 设置其他文件类型View模板
+		setOtherTpl : function(data) {
+			var tpl = opts.tpl('other', 1);
+			$('#uList').html($('#uList').html() + tpl);
+			var thisLi = $('#uList li').eq(data.file.index);
+			thisLi.find('.fileName text').text(data.file.name);
+			thisLi.find('.fileSize text').text(data.fileSize);
+			thisLi.find('.fileType text').text(data.fileType);
+		},
+		// 上传状态改变时触发
 		stageChange : function(file) {
 			var uList = $('#uList li').eq(file.index);
 			uList.find('.progress').show();
@@ -157,11 +181,8 @@
 		} // 当开启队列上传时可以知道那个文件正在被上传
 
 	};
-	// 添加拖拽上传事件
 	$('#event').dropFile(opts);	
-	// 添加选择上传事件
-	$('#event #selectFile').selectFile(opts);
-	// 添加粘贴上传事件	
+	$('#event #selectFile').selectFile(opts);	
 	$('#event').pasteFile(opts);	
 </script>
 </body>

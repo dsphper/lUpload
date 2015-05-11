@@ -167,20 +167,22 @@
 	    return filesize;
 	}
 	function setImageTpl(file, image, img) {
-		var tpl = opts.tpl('image', 1);
-		$('#uList').html($('#uList').html() + tpl);
-		var thisLi = $('#uList li').eq(file.index);
-		thisLi.find('.image img').attr('src', image.target.result);
-		thisLi.find('.fileName').text(file.name);
-		thisLi.find('.imageSize text').text(img.width + ' X ' + img.height);
-		thisLi.find('.fileSize text').text(getFileSize(file));
-		loadOk++;
-		if(loadOk == queue.length && !opts.multithreading) {
-			upload(queue[0]);
-		}
-		if(opts.multithreading) {
-			upload(file);
-		}
+		opts.setImageTpl(file, image, img);
+		// var tpl = opts.tpl('image', 1);
+		// $('#uList').html($('#uList').html() + tpl);
+		// var thisLi = $('#uList li').eq(file.index);
+		// thisLi.find('.image img').attr('src', image.target.result);
+		// thisLi.find('.fileName').text(file.name);
+		// thisLi.find('.imageSize text').text(img.width + ' X ' + img.height);
+		// thisLi.find('.fileSize text').text(getFileSize(file));
+		// thisLi.find('.fileType text').text(getFileType(file));
+		// loadOk++;
+		// if(loadOk == queue.length && !opts.multithreading) {
+		// 	upload(queue[0]);
+		// }
+		// if(opts.multithreading) {
+		// 	upload(file);
+		// }
 	}
 	function setOtherTpl(file) {
 		var tpl = opts.tpl('other', 1);
@@ -188,6 +190,7 @@
 		var thisLi = $('#uList li').eq(file.index);
 		thisLi.find('.fileName text').text(file.name);
 		thisLi.find('.fileSize text').text(getFileSize(file));
+		thisLi.find('.fileType text').text(getFileType(file));
 		var type = getFileType(file);
 		if(opts.Knowntype[type] != undefined && opts.Knowntype[type] != 'undefined') {
 			thisLi.find('.image img').attr('src', opts.Knowntype[type]);
