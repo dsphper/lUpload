@@ -1,12 +1,19 @@
 #插件升级到 0.0.2
-新增功能 <br> 
-1.粘贴上传 <br> 
-2.选择上传 <br> 
-3.队列上传 <br> 
-4.多类型文件上传(可以针对不同类型设置缩略图) <br> 
-5.增加多文件队列上传和同时上传的开关 <br> 
-项目主页：http://dsphper.github.io/ <br> 
-演示Demo：http://1.luploaddemo.sinaapp.com/ <br> 
+新增功能 <br/>
+1.粘贴上传 <br/>
+2.选择上传 <br/>
+3.队列上传 <br/>
+4.多类型文件上传(可以针对不同类型设置缩略图) <br/>
+5.增加多文件队列上传和同时上传的开关 <br/>
+项目主页：http://dsphper.github.io/ <br/>
+演示Demo：http://1.luploaddemo.sinaapp.com/ <br/>
+# 版本：0.0.1
+支持的功能： <br/>
+1.多文件上传 <br/>
+2.拖拽上传 <br/>
+3.进度条 <br/>
+4.查看上传网速 <br/>
+扩展性良好 <br/>
 #--------声明---------
 Author : dsphper <br/>
 Version : 0.0.1 <br/>
