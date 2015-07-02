@@ -15,7 +15,7 @@
 项目主页：http://dsphper.github.io/  
 演示Demo：http://1.luploaddemo.sinaapp.com/  
 ###Document
-###使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
+####使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
 ##拖拽上传
 ```javascript  
 ```  
