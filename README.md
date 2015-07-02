@@ -1,23 +1,11 @@
-#插件升级到 0.0.2
-新增功能 <br/>
-1.粘贴上传 <br/>
-2.选择上传 <br/>
-3.队列上传 <br/>
-4.多类型文件上传(可以针对不同类型设置缩略图) <br/>
-5.增加多文件队列上传和同时上传的开关 <br/>
-项目主页：http://dsphper.github.io/ <br/>
-演示Demo：http://1.luploaddemo.sinaapp.com/ <br/>
-# 版本：0.0.1
-支持的功能： <br/>
-1.多文件上传 <br/>
-2.拖拽上传 <br/>
-3.进度条 <br/>
-4.查看上传网速 <br/>
-扩展性良好 <br/>
-#--------声明---------
-Author : dsphper <br/>
-Version : 0.0.1 <br/>
-Licensed under the MIT license: <br/>
-	http://www.opensource.org/licenses/mit-license.php <br/>
-	Project home: <br/>
-	https://github.com/dsphper/lUpload
+##插件介绍
+插件基于jQuery开发，可支持；
+>1.粘贴上传
+2.拖拽上传
+3.选择上传
+4.实时上传速度
+5.实时进度信息
+7.可自定义不同文件类型上传缩略图
+8.同步上传(阻塞式的文件会一个接一个的上传)
+9.异步上传
+
