@@ -70,15 +70,12 @@ tpl : function(type) { // 自定义模板
 // result 结构 {thisDom: 当前被上传的节点, progress: 进度, speed: "网速", loaded: "已上传的大小 992 KB"}
 dynamic : function(result) { // 返回网速及上传百分比
 	result.thisDom.find('#progress').css('width', result.progress + '%').html(result.progress + '%');
-	result.thisDom.find('.speed').text("网速：" + result.speed + " K\/S")
-	result.thisDom.find('.loaded text').text(result.loaded + ' / ' + result.total)
-
+	result.thisDom.find('.speed').text("网速：" + result.speed + " K\/S");
+	result.thisDom.find('.loaded text').text(result.loaded + ' / ' + result.total);
 },
 complete : function(file) { // 上传完成后调用的
 	var uList = $('#uList li').eq(file.index);
-
 	uList.find('.stage text').html('上传完成！');
-
 	// console.log('第' + file.index + '文件上传完成!');
 },
 stageChange : function(file) {
@@ -87,7 +84,6 @@ stageChange : function(file) {
 	uList.find('.stage text').html('正在被上传');
 	// console.log(file.index + '正在被上传');
 } // 当开启队列上传时可以知道那个文件正在被上传
-
 };
 // 添加拖拽上传事件
 $('#event').dropFile(opts);	
@@ -96,3 +92,4 @@ $('#event #selectFile').selectFile(opts);
 // 添加粘贴上传事件	
 $('#event').pasteFile(opts);	
 ```
+sadsadsa
