@@ -10,8 +10,17 @@
 9.异步上传(和同步上传相反)  
 浏览器支持情况：
 ![github logo](http://dsphper.github.io/assets/image/jianrong.gif)  
-
+###DEMO
+项目主页：http://dsphper.github.io/  
+演示Demo：http://1.luploaddemo.sinaapp.com/  
 ###Document
+###使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
+##拖拽上传
+```javascript  
+```  
+
+##使用插件完全完全功能的实例：  
+
 ```javascript
 // 说明 $('#drop').dropFile为拖拽上传 $('#drop').pasteFile为粘贴上传 $('#drop').selectFile 为选择上传
 // 拖拽上传
@@ -93,3 +102,6 @@ $('#event #selectFile').selectFile(opts);
 // 添加粘贴上传事件	
 $('#event').pasteFile(opts);	
 ```  
+###版权
+插件开源，所以您不需要得到作者的允许来使用。
+但必须保留作者的版权信息。
