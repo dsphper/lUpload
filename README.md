@@ -9,8 +9,9 @@
 8.同步上传(阻塞式的文件会一个接一个的上传)  
 9.异步上传(和同步上传相反)
 浏览器支持情况：
-!()[http://dsphper.github.io/assets/image/jianrong.gif]
-Document
+!(jianrong)[http://dsphper.github.io/assets/image/jianrong.gif]  
+
+###Document
 ```javascript
 // 说明 $('#drop').dropFile为拖拽上传 $('#drop').pasteFile为粘贴上传 $('#drop').selectFile 为选择上传
 // 拖拽上传
