@@ -8,8 +8,9 @@
 7.可自定义不同文件类型上传缩略图  
 8.同步上传(阻塞式的文件会一个接一个的上传)  
 9.异步上传(和同步上传相反)  
-浏览器支持情况：
+浏览器支持情况：  
 ![github logo](http://dsphper.github.io/assets/image/jianrong.gif)  
+
 ###DEMO
 项目主页：http://dsphper.github.io/  
 演示Demo：http://1.luploaddemo.sinaapp.com/  
