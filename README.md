@@ -38,11 +38,11 @@ tpl : function(type) { // 自定义模板
 			<img src="./assets/image/aa.jpg" alt="">\
 		</div>\
 		<div class="uploadInfo">\
-			<span class="fileName">文件名称: <text>ssad</text></span>\
-			<span class="imageSize">图片尺寸: <text>ssad</text></span>\
-			<span class="fileSize">文件大小: <text>ssad</text></span>\
-			<span class="speed">上传速度: <text>ssad</text></span>\
-			<span class="loaded">上传详情: <text>zzzz</text></span>\
+			<span class="fileName">文件名称: <text> default </text></span>\
+			<span class="imageSize">图片尺寸: <text> default </text></span>\
+			<span class="fileSize">文件大小: <text> default </text></span>\
+			<span class="speed">上传速度: <text> default </text></span>\
+			<span class="loaded">上传详情: <text> default </text></span>\
 			<span class="stage">\
 				上传状态: <text>等待上传</text>\
 			</span>\
@@ -58,10 +58,10 @@ tpl : function(type) { // 自定义模板
 			<img src="./assets/image/aa.jpg" alt="">\
 		</div>\
 		<div class="uploadInfo">\
-			<span class="fileName">文件名称: <text>ssad</text></span>\
-			<span class="fileSize">文件大小: <text>ssad</text></span>\
-			<span class="speed">上传速度: <text>ssad</text></span>\
-			<span class="loaded">上传详情: <text>zzzz</text></span>\
+			<span class="fileName">文件名称: <text> default </text></span>\
+			<span class="fileSize">文件大小: <text> default </text></span>\
+			<span class="speed">上传速度: <text> default </text></span>\
+			<span class="loaded">上传详情: <text> default </text></span>\
 			<span class="stage">\
 				上传状态: <text>等待上传</text>\
 			</span>\
