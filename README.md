@@ -20,7 +20,7 @@
 ```javascript  
 ```  
 
-##使用插件完全完全功能的实例：  
+##插件使用实例：  
 
 ```javascript
 // 说明 $('#drop').dropFile为拖拽上传 $('#drop').pasteFile为粘贴上传 $('#drop').selectFile 为选择上传
@@ -101,7 +101,8 @@ $('#event').dropFile(opts);
 // 添加选择上传事件
 $('#event #selectFile').selectFile(opts);
 // 添加粘贴上传事件	
-$('#event').pasteFile(opts);	
+$('#event').pasteFile(opts);
+// 支持同时添加多个事件
 ```  
 ###版权
 ######MIT
