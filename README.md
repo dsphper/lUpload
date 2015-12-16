@@ -88,13 +88,12 @@ dynamic : function(result) { // 返回网速及上传百分比
 complete : function(file) { // 上传完成后调用的
 	var uList = $('#uList li').eq(file.index);
 	uList.find('.stage text').html('上传完成！');
-	// console.log('第' + file.index + '文件上传完成!');
+	// 使用 file.index 查看第几个文件上传完毕
 },
 stageChange : function(file) {
 	var uList = $('#uList li').eq(file.index);
 	uList.find('.progress').show();
 	uList.find('.stage text').html('正在被上传');
-	// console.log(file.index + '正在被上传');
 } // 当开启队列上传时可以知道那个文件正在被上传
 };
 // 添加拖拽上传事件
