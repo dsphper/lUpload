@@ -31,7 +31,7 @@ maxfiles: 111 , // 单次上传的数量
 maxfilesize : 11,  // 单个文件允许的大小 (M)
 multithreading : true, // true为同时上传false为队列上传
 type : [], // 限制上传的类型
-Knowntype : {'pdf':'./image/pdf.jpg', 'html':'./assets/image/html.png'}, // 自定义其他文件的缩略图
+Knowntype : {'pdf':'./image/pdf.jpg', 'html':'./assets/image/html.png'}, // 根据不同上传类型设置缩略图
 tpl : function(type) { // 自定义模板
 	var imageTpl = '<li>\
 		<div class="image">\
