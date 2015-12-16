@@ -1,7 +1,7 @@
 /**
  * Author : dsphper
  * Email : dsphper@gmail.com
- * Version : 0.0.1
+ * Version : 1.0.1
  * Licensed under the MIT license:
  * 	http://www.opensource.org/licenses/mit-license.php
  * 	Project home:
