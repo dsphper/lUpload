@@ -72,6 +72,7 @@ tpl : function(type) { // 自定义模板
 			</div>\
 		</div>\
 	</li>';
+	// 为不同的上传类型定义不同的模板 ClassName 必须注意填写正确
 	if(type == 'image') {
 		return imageTpl;
 	} else if(type == 'other') {
