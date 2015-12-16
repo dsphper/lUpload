@@ -104,5 +104,4 @@ $('#event #selectFile').selectFile(opts);
 $('#event').pasteFile(opts);	
 ```  
 ###版权
-插件开源，所以您不需要得到作者的允许来使用。
-但必须保留作者的版权信息。
+MIT
