@@ -7,7 +7,6 @@ ini_set('max_input_time','90');
 ini_set('max_execution_time', '180');
 //正在运行的脚本大量使用系统可用内存,上传图片给多点，最好比post_max_size大1.5倍 
 ini_set('memory_limit','200M');
-var_dump($_FILES);
 if(!is_dir(dirname(__FILE__) . '/upload')) {
 	mkdir(dirname(__FILE__) . '/upload');
 }
