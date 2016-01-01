@@ -117,13 +117,12 @@ stageChange : function(file) {
 	uList.find('.stage text').html('正在被上传');
 } // 当开启队列上传时可以知道那个文件正在被上传
 };
-// 添加拖拽上传事件
-$('#event').dropFile(opts);	
-// 添加选择上传事件
-$('#event #selectFile').selectFile(opts);
-// 添加粘贴上传事件	
-$('#event').pasteFile(opts);
-// 支持同时添加多个事件
+window.addEventListener('onload', function() {
+	$('#event').dropFile(opts);	
+	$('#event #selectFile').selectFile(opts);	
+	$('#event').pasteFile(opts);		
+})
+
 ```  
 ##HTML代码
 ```html
