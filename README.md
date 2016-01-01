@@ -18,8 +18,29 @@
 ####使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
 ##拖拽上传
 ```javascript  
+// 添加拖拽上传事件
+$('#event').dropFile(opts);
 ```  
+##选择上传
+```javascript  
+// 添加选择上传事件
+$('#event #selectFile').selectFile(opts);
+```  
+##粘贴上传
+```javascript  
+// 添加粘贴上传事件	
+$('#event').pasteFile(opts);
+```  
+##同时使用多个上传事件
+```javascript
+// 添加拖拽上传事件
+$('#event').dropFile(opts);
+// 添加选择上传事件
+$('#event #selectFile').selectFile(opts);
+// 添加粘贴上传事件	
+$('#event').pasteFile(opts);
 
+```
 ##插件使用实例：  
 
 ```javascript
