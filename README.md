@@ -125,5 +125,11 @@ $('#event #selectFile').selectFile(opts);
 $('#event').pasteFile(opts);
 // 支持同时添加多个事件
 ```  
+##HTML代码
+```html
+这是上传详情展示的地方，ID默认使用`uList`如果想要更改请修改源代码。
+<ul id="uList">
+</ul>
+```
 ###版权
 ######MIT
