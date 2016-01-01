@@ -117,10 +117,10 @@ stageChange : function(file) {
 	uList.find('.stage text').html('正在被上传');
 } // 当开启队列上传时可以知道那个文件正在被上传
 };
-window.addEventListener('onload', function() {
+$(function() {
 	$('#event').dropFile(opts);	
 	$('#event #selectFile').selectFile(opts);	
-	$('#event').pasteFile(opts);		
+	$('#event').pasteFile(opts);	
 })
 
 ```  
