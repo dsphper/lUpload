@@ -41,6 +41,17 @@ $('#event #selectFile').selectFile(opts);
 $('#event').pasteFile(opts);
 
 ```
+
+```  
+##HTML代码
+```html
+请引入jQuery与本插件
+这是上传详情展示的地方，ID默认使用`uList`如果想要更改请修改源代码。
+<ul id="uList">
+<!--这里是你在js中配置的模板最终被插入到的地方-->
+</ul>
+```
+
 ##插件使用实例：  
 
 ```javascript
@@ -123,14 +134,6 @@ $(function() {
 	$('#event').pasteFile(opts);	
 })
 
-```  
-##HTML代码
-```html
-请引入jQuery与本插件
-这是上传详情展示的地方，ID默认使用`uList`如果想要更改请修改源代码。
-<ul id="uList">
-<!--这里是你在js中配置的模板最终被插入到的地方-->
-</ul>
-```
+
 ###版权
 ######MIT
