@@ -133,7 +133,7 @@ $(function() {
 	$('#event #selectFile').selectFile(opts);	
 	$('#event').pasteFile(opts);	
 })
-
+```
 
 ###版权
 ######MIT
