@@ -42,7 +42,6 @@ $('#event').pasteFile(opts);
 
 ```
 
-```  
 ##HTML代码
 ```html
 请引入jQuery与本插件
