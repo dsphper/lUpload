@@ -7,7 +7,7 @@
 5.实时进度信息  
 7.可自定义不同文件类型上传缩略图  
 8.同步上传(阻塞式的文件会一个接一个的上传)  
-9.异步上传(和同步上传相反)  
+9.异步上传
 浏览器支持情况：  
 ![github logo](http://dsphper.github.io/assets/image/jianrong.gif)  
 
