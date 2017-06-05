@@ -1,4 +1,4 @@
-##插件介绍
+## 插件介绍
 插件基于jQuery开发，可支持：
 >1.粘贴上传  
 2.拖拽上传  
@@ -12,27 +12,27 @@
 浏览器支持情况：  
 ![github logo](http://dsphper.github.io/assets/image/jianrong.gif)  
 
-###DEMO
+### DEMO
 项目主页：http://dsphper.github.io/  
 演示Demo：http://1.luploaddemo.sinaapp.com/  
-###Document
-####使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
-##拖拽上传
+### Document
+#### 使用本插件您完全不需要有太多的JS相关知识，只需按照文档简单的书写相关调用函数即可，  
+## 拖拽上传
 ```javascript  
 // 添加拖拽上传事件
 $('#event').dropFile(opts);
 ```  
-##选择上传
+## 选择上传
 ```javascript  
 // 添加选择上传事件
 $('#event #selectFile').selectFile(opts);
 ```  
-##粘贴上传
+## 粘贴上传
 ```javascript  
 // 添加粘贴上传事件	
 $('#event').pasteFile(opts);
 ```  
-##同时使用多个上传事件
+## 同时使用多个上传事件
 ```javascript
 // 添加拖拽上传事件
 $('#event').dropFile(opts);
@@ -43,7 +43,7 @@ $('#event').pasteFile(opts);
 
 ```
 
-##HTML代码
+## HTML代码
 ```html
 请引入jQuery与本插件
 这是上传详情展示的地方，ID默认使用`uList`如果想要更改请修改源代码。
@@ -52,7 +52,7 @@ $('#event').pasteFile(opts);
 </ul>
 ```
 
-##插件使用实例：  
+## 插件使用实例：  
 
 ```javascript
 // 说明 $('#drop').dropFile为拖拽上传 $('#drop').pasteFile为粘贴上传 $('#drop').selectFile 为选择上传
@@ -136,5 +136,5 @@ $(function() {
 ```
 
 
-###版权
-######MIT
+### 版权
+###### MIT
